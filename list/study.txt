@@ -1,0 +1,56 @@
+
+list 同じ型しか使えない
+
+
+文字列はcのように文字のリスト
+
+"abc"
+と
+['a','b','c']
+は同義
+
+
+
+
+countlineコマンド
+
+$演算子
+
+print $ length $ lines cs
+は
+print (length (lines cs))
+
+と同義
+
+haskellは関数適用で多重に使うので()を使わない
+
+
+lines関数
+
+lines "aaa\nccc\nccc\n"      ->       ["aaa","ccc","ccc"]
+
+
+
+length関数
+リストの長さを取得
+
+
+
+headコマンド
+
+引数の関数適用
+
+第2引数もスペースで並べる
+
+関数の定義
+firstNLines n cs = unlines $ take n $ lines cs
+
+関数名　仮引数１　仮引数２　= 本体
+
+関数の返り値はしっかり型をもつ
+
+unlines関数lines関数の逆文字列のリストを\nでつなげる
+
+take関数第一引数文の要素をリストで得る
+
+
