@@ -1,0 +1,69 @@
+haskellのプログラムはモジュールという単位で分割される
+haskellの関数や変数は必ずモジュールに属する
+
+他のモジュールで定義されている関数など使いたい時にはimport宣言を使う
+
+import System.EnvironmentはSystemモジュールの公開する関数や型などを使うことができる
+
+
+Mainモジュール
+haskellの決まりによればすべての関数が何らかのモジュールに属するのでmainも変数なので何らかのモジュールに属するはずである
+mainはMainモジュールに属していて、暗黙的に使えるようになっている
+
+
+Preludeモジュール
+基本的な関数などが定義されているモジュール
+getContentsアクションやlines関数、リストや整数の型などもPreludeモジュールにて定義されている
+これも暗黙で使えるようになっている
+
+unwords関数
+unwords ::[String]->String
+文字列のリストを空白を挟んで連結して文字列にする
+
+
+System.getArgsアクション
+getArgs :: IO [String]
+getArgsアクションはプログラムの実行時のコマンドライン引数を読み込むアクションです
+
+head関数
+head::[a]->a
+リストの最初の要素を返します
+
+tail関数
+tail::[a]->[a]
+リストの最初の要素を除いたリストを返す
+
+filter関数
+filter::(a->Bool)->[a]->[a]
+filterは高階関数でリスト要素xのうち、[f x]がtrueの要素だけ返す
+
+where節
+where内で定義された関数や変数はwhere節外では使えません、
+またwhereは外での関数の引数を参照にできます
+
+
+match関数
+haskellにはリストから特定の文字列を持つかどうか判断する関数は有りません
+
+なのでtailで頭から文字を減らして、isPrefixOfで頭の文字列が含むかどうかをチェックする形
+
+any関数
+any::(a->Bool)-> [a] -> Bool
+高階関数　リストの各要素xにfを適用いずれかがtrueならTrue
+
+Data.List.tails関数
+tails::[a]->[[a]]
+上のアルゴリズムに適用するために生まれたような関数、
+
+tails [1,2,3] = [[1,2,3],[2,3],[3],[]]
+
+
+isPrefixOf :: (Eq a) => [a] -> [a] -> [a] -> Bool
+関数適用の違い
+
+pattern `isPrefixOf` line
+と
+isPrefixOf pattern line
+
+同義
+
